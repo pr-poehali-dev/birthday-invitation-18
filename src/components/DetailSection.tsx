@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, PartyPopper, Music, Swimming, Utensils } from "lucide-react";
+import { ArrowLeft, PartyPopper, Music, Utensils, Waves } from "lucide-react";
 
 interface DetailSectionProps {
   onBack: () => void;
@@ -32,7 +32,7 @@ const DetailSection = ({ onBack }: DetailSectionProps) => {
         <Card className="p-4 bg-white/80 backdrop-blur-sm border-primary/20">
           <div className="flex flex-col items-center text-center space-y-2">
             <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center">
-              <Swimming className="h-6 w-6 text-primary" />
+              <Waves className="h-6 w-6 text-primary" />
             </div>
             <h3 className="font-semibold text-lg">Бассейн и баня</h3>
             <p className="text-sm">

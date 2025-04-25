@@ -1,86 +1,76 @@
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin, Calendar, Clock, Music, Utensils, Swimming, PartyPopper } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { PartyPopper, Music, Utensils, Waves } from "lucide-react";
 
 interface InvitationCardProps {
-  onClick: () => void;
+  onDetails: () => void;
 }
 
-const InvitationCard = ({ onClick }: InvitationCardProps) => {
+const InvitationCard = ({ onDetails }: InvitationCardProps) => {
   return (
-    <Card className="w-full max-w-md bg-white/80 backdrop-blur-sm shadow-lg border-primary/20 overflow-hidden">
-      <CardHeader className="bg-primary/20 pb-2">
-        <CardTitle className="text-2xl text-center text-primary font-bold">
-          Приглашение на день рождения!
-        </CardTitle>
-        <CardDescription className="text-center text-lg font-medium">
-          🎉 18 лет 🎉
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="pt-6 space-y-4">
-        <div className="text-xl font-semibold text-center mb-4">
-          Жду именно тебя на моё 18-летие!
+    <Card className="w-full max-w-md mx-auto overflow-hidden shadow-xl border-purple-300 bg-white/90 backdrop-blur-sm animate-fade-in">
+      <div className="relative h-48 bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')] bg-cover bg-center opacity-40"></div>
+        <div className="relative z-10 text-white text-center px-4">
+          <div className="animate-scale-in">
+            <PartyPopper className="mx-auto h-12 w-12 mb-2" />
+            <h1 className="text-3xl font-bold">Приглашение</h1>
+            <p className="text-lg">на моё 18-летие!</p>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-6 space-y-6">
+        <div className="text-center">
+          <p className="text-lg font-medium text-purple-700">
+            Жду именно тебя на моё 18-летие!
+          </p>
+          <p className="mt-2 text-gray-600">
+            Готовьтесь к крутому отдыху в шикарном коттедже 
+            с баней, бассейном и кучей веселья! Будет музыка, танцы, 
+            вкусная еда и море позитива)
+          </p>
         </div>
         
-        <div className="flex items-start gap-3">
-          <Calendar className="h-5 w-5 text-primary shrink-0 mt-1" />
-          <div>
-            <div className="font-semibold">Дата:</div>
-            <div>16 мая - 17 мая</div>
+        <div className="grid grid-cols-3 gap-3">
+          <div className="flex flex-col items-center text-center">
+            <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
+              <Waves className="h-5 w-5 text-purple-600" />
+            </div>
+            <span className="mt-1 text-sm font-medium">Бассейн</span>
+          </div>
+          
+          <div className="flex flex-col items-center text-center">
+            <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
+              <Music className="h-5 w-5 text-purple-600" />
+            </div>
+            <span className="mt-1 text-sm font-medium">Музыка</span>
+          </div>
+          
+          <div className="flex flex-col items-center text-center">
+            <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
+              <Utensils className="h-5 w-5 text-purple-600" />
+            </div>
+            <span className="mt-1 text-sm font-medium">Еда</span>
           </div>
         </div>
         
-        <div className="flex items-start gap-3">
-          <Clock className="h-5 w-5 text-primary shrink-0 mt-1" />
-          <div>
-            <div className="font-semibold">Время:</div>
-            <div>Начало в 19:00 (16 мая)</div>
-            <div>Окончание в 13:00 (17 мая)</div>
+        <div className="border-t border-gray-200 pt-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="font-medium">16 мая, 19:00</p>
+              <p className="text-sm text-gray-500">ул. Южная 31, пос. Солонцы</p>
+            </div>
+            <Button 
+              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+              onClick={onDetails}
+            >
+              Подробнее
+            </Button>
           </div>
         </div>
-        
-        <div className="flex items-start gap-3">
-          <MapPin className="h-5 w-5 text-primary shrink-0 mt-1" />
-          <div>
-            <div className="font-semibold">Место:</div>
-            <div>Коттедж по адресу: 31, Южный мкр, пос. Солонцы, Емельяновский район, Красноярский край</div>
-          </div>
-        </div>
-
-        <div className="pt-2 space-y-2">
-          <div className="font-semibold text-center">Вас ждет:</div>
-          <div className="grid grid-cols-2 gap-2">
-            <div className="flex items-center gap-2">
-              <Swimming className="h-4 w-4 text-primary" />
-              <span>Бассейн</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span role="img" aria-label="sauna" className="text-lg">🧖‍♀️</span>
-              <span>Баня</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Music className="h-4 w-4 text-primary" />
-              <span>Музыка и танцы</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Utensils className="h-4 w-4 text-primary" />
-              <span>Вкусная еда</span>
-            </div>
-          </div>
-        </div>
-      </CardContent>
-      <CardFooter className="flex flex-col gap-4 pt-2">
-        <div className="text-center w-full">
-          <div className="font-semibold">Организатор:</div>
-          <div>Иришка</div>
-          <div className="text-primary">+7 950 975 82 00</div>
-        </div>
-        <Button onClick={onClick} className="w-full group">
-          <PartyPopper className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
-          Подробнее
-        </Button>
-      </CardFooter>
+      </div>
     </Card>
   );
 };

@@ -2,9 +2,10 @@
 import { useState } from "react";
 import InvitationCard from "@/components/InvitationCard";
 import DetailSection from "@/components/DetailSection";
+import WishlistSection from "@/components/WishlistSection";
 
 const BirthdayInvitation = () => {
-  const [showDetails, setShowDetails] = useState(false);
+  const [currentView, setCurrentView] = useState<'invitation' | 'details' | 'wishlist'>('invitation');
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-50 to-pink-50 p-4 sm:p-6 md:p-8">
@@ -21,10 +22,30 @@ const BirthdayInvitation = () => {
           </h1>
         </div>
         
-        {!showDetails ? (
-          <InvitationCard onDetails={() => setShowDetails(true)} />
-        ) : (
-          <DetailSection onBack={() => setShowDetails(false)} />
+        {currentView === 'invitation' && (
+          <InvitationCard 
+            onDetails={() => setCurrentView('details')} 
+            onWishlist={() => setCurrentView('wishlist')}
+          />
+        )}
+        
+        {currentView === 'details' && (
+          <DetailSection 
+            onBack={() => setCurrentView('invitation')} 
+            onWishlist={() => setCurrentView('wishlist')}
+          />
+        )}
+        
+        {currentView === 'wishlist' && (
+          <div className="space-y-6">
+            <button 
+              onClick={() => setCurrentView('invitation')}
+              className="flex items-center justify-center space-x-2 text-primary hover:text-primary/80 transition-colors px-4 py-2 rounded-md bg-white/80 shadow-sm mx-auto mb-6"
+            >
+              <span>← Назад к приглашению</span>
+            </button>
+            <WishlistSection />
+          </div>
         )}
       </div>
     </div>

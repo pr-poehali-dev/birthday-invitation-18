@@ -1,23 +1,35 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, PartyPopper, Music, Utensils, Waves } from "lucide-react";
+import { ArrowLeft, PartyPopper, Music, Utensils, Waves, Gift } from "lucide-react";
 
 interface DetailSectionProps {
   onBack: () => void;
+  onWishlist: () => void;
 }
 
-const DetailSection = ({ onBack }: DetailSectionProps) => {
+const DetailSection = ({ onBack, onWishlist }: DetailSectionProps) => {
   return (
     <div className="space-y-6 w-full max-w-3xl mx-auto">
-      <Button 
-        variant="outline" 
-        onClick={onBack} 
-        className="mb-4 bg-white/80"
-      >
-        <ArrowLeft className="mr-2 h-4 w-4" />
-        Назад
-      </Button>
+      <div className="flex justify-between items-center">
+        <Button 
+          variant="outline" 
+          onClick={onBack} 
+          className="mb-4 bg-white/80"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Назад
+        </Button>
+        
+        <Button 
+          variant="outline" 
+          onClick={onWishlist} 
+          className="mb-4 bg-white/80 border-primary text-primary hover:bg-primary/10"
+        >
+          <Gift className="mr-2 h-4 w-4" />
+          Вишлист
+        </Button>
+      </div>
       
       <h2 className="text-3xl font-bold text-primary text-center">
         Готовьтесь к незабываемому празднику!
